@@ -46,7 +46,7 @@ function mostrarCita(cita) {
 
     cita.services.forEach(servicio => {
         const citaElement = document.createElement('div');
-        citaElement.classList.add('bg-stone-800', 'p-4', 'rounded-lg', 'w-full', 'md:w-2/4','gap-4', 'lg:w-2/4', 'mb-4', 'ml-8');
+        citaElement.classList.add('bg-stone-800', 'p-4', 'rounded-lg', 'w-full', 'md:w-2/4','gap-4', 'lg:w-2/4', 'mb-4', 'md:ml-8');
 
         const citaContent = `
             <div class="text-sm">
