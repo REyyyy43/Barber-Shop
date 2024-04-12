@@ -10,8 +10,18 @@ function obtenerAdminId() {
     // Devolver el ID del administrador (o null si no se encuentra)
     return decodedToken ? decodedToken.adminId : null;
 }
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        // Obtener servicios y mostrarlos
+        const serviceResponse = await axios.get('/api/services', { withCredentials: true });
+        const services = serviceResponse.data;
+        const listService = document.getElementById('list-service');
+
+        services.forEach(service => {
+            mostrarServicio(service, listService);
+        });
+
         // Obtener citas y mostrarlas
         const response = await axios.get('/api/citas', { withCredentials: true });
         const citas = response.data;
@@ -25,16 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             document.getElementById('titulo-citas').style.display = 'none';
         }
-
-        // Obtener servicios y mostrarlos
-        const serviceResponse = await axios.get('/api/services', { withCredentials: true });
-        const services = serviceResponse.data;
-        const listService = document.getElementById('list-service');
-
-        services.forEach(service => {
-            mostrarServicio(service, listService);
-        });
-
     } catch (error) {
         console.error('Error al cargar la página:', error);
     }
