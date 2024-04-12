@@ -31,6 +31,25 @@
     </nav>
     <div class="parallax-container">
       <div class="parallax-background"></div>
+      <style>
+        /* Estilos para el efecto parallax */
+        .parallax-container {
+          position: relative;
+          overflow: hidden;
+          height: 100vh;
+        }
+    
+        .parallax-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          transform: translateZ(0); /* Para mejorar el rendimiento en algunos navegadores */
+        }
+      </style>
     <main>
       <div
         class="relative pt-16 pb-32 flex content-center items-center justify-center"
