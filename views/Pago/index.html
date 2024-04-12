@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="bg-stone-600">
+    <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen bg-cover bg-center p-2"
+        style="background-image: url('/images/jay-heike-Ho-QHf3kqIc-unsplash copy.jpg');">
+        <!-- Fondo negro con opacidad -->
+        <div class="absolute top-0 w-full h-full bg-black opacity-75"></div>
+        <div class="container mx-auto p-8 w-full flex flex-col md:flex-row">
+            <!-- Formulario de pago -->
+            <div class="md:w-2/4 w-full md:pr-10 flex flex-col text-slate-100 relative border border-b p-4 border-stone-400 rounded-lg"> <!-- Añadido 'relative' para evitar heredar la opacidad -->
+                <h2 class="text-2xl font-semibold mb-6">Pagar</h2>
+                <label for="cardholder-name" class="block mb-2">Nombre del titular de la tarjeta:</label>
+                <input id="cardholder-name" type="text"
+                    class="w-full py-2 px-4 mb-4 bg-white border border-gray-300 rounded">
+                <label for="card-element" class="block mb-2">Detalles de la tarjeta:</label>
+                <div id="card-element" class="bg-white border border-gray-300 rounded py-2 px-4 mb-4"></div>
+                <div id="card-errors" role="alert" class="text-red-500"></div>
+                <button id="submit-button"
+                    class="hover:bg-green-500 bg-green-600 text-white py-2 px-4 rounded cursor-pointer">Pagar</button>
+            </div>
+            <!-- Contenedor de las citas -->
+            <div id="citas-container" class="text-slate-100 md:w-2/5 w-full md:pl-10 relative"> <!-- Añadido 'relative' -->
+                <!-- Aquí puedes colocar el contenido de las citas -->
+                <h2 class="text-xl font-semibold mb-4">Cita agendada</h2>
+                <!-- Ejemplo de una cita -->
+                
+                <!-- Fin del ejemplo -->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</body>
+</html>

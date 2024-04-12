@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/img/apple-icon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <title>Barbería - Dashboard</title>
+
+</head>
+<body class="bg-stone-900 antialiased">
+    <nav id="navbar" class="bg-stone-800 w-full z-20 top-0 start-0 shadow-xl">
+     
+    </nav>
+    <main>
+        <section>
+            <div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 75vh;"
+      >
+        <div
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+          style='background-image: url("/images/andrea-donato-MNu0n-3BIKs-unsplash.jpg");'
+        >
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute opacity-75 bg-black"
+          ></span>
+        </div>
+        <div class="container relative mx-auto">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div class="pr-12">
+                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Bienvenido Admin</h1>
+                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-4">aqui podras ver tu agenda y editar los servicios ofrecidos en tu barberia</p>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+          style="height: 70px;"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+          
+          </svg>
+        </div>
+      </div>
+      <section id="service-container" class="text-white md:flex md:flex-col md:justify-center p-6">  
+        <div class="md:flex md:justify-center md:flex-row md:space-x-6"> <!-- Contenedor flexible para alinear elementos en filas en dispositivos medianos y mayores -->
+          <form id="service-form" class="w-full md:w-2/5 p-2 mt-2 mb-6"> <!-- Coloca el formulario a la izquierda y establece un margen inferior -->
+            <h1 class="font-extrabold md:text-4xl p-2 mr-28 text-white text-center flex">Crear servicios</h1>
+            <div class="relative">
+                    <input type="text" id="service-name" name="service-name" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-1 border-stone-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 peer" placeholder=" " />
+                    <label for="service-name" class="absolute text-sm text-stone-300 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-stone-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-stone-400 peer-focus:dark:text-stone-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nombre del servicio</label>
+                </div> <br>
+                <div class="relative">
+                    <input type="number" id="service-duration" name="service-duration" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-1 border-stone-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 peer" placeholder=" " />
+                    <label for="service-duration" class="absolute text-sm text-stone-300 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-stone-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-stone-400 peer-focus:dark:text-stone-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Duracion</label>
+                </div> <br>
+                <div class="relative">
+                <label for="service-price" class="absolute text-sm text-stone-300 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-stone-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-stone-400 peer-focus:dark:text-stone-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Precio</label><br>
+                <input type="number" id="service-price" name="price" step="0.01" value="0.00" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-stone-300 bg-transparent rounded-lg border-1 border-stone-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-stone-500 focus:outline-none focus:ring-0 focus:border-stone-600 peer" placeholder=" " />
+                </div>
+                <br>
+                <button class="p-4 px-2 py-2 w-full flex justify-center items-center bg-stone-500 rounded-md" type="submit">Crear Servicio</button>
+                <br>
+                <p class="text-sm text-red-500 font-bold relative" id="errorText"></p>
+              
+            </form>
+           
+            <ul id="list-service" class="md:w-2/5"> <!-- Coloca los servicios a la derecha -->
+              <h1 class="font-extrabold md:text-4xl p-2 mr-28 text-white text-center flex">Servicios Creados</h1>
+              <!-- Contenido de los servicios --> 
+          </ul>
+        </div>
+          </section>
+
+      
+       
+          
+        </section>
+        <div class="md:flex md:flex-row md:justify-between">
+          <div class="bg-stone-900 h-full rounded-lg">
+            <div class="p-2">
+            <h1 id="titulo-citas" class="font-extrabold md:text-4xl mr-28 text-white text-center">¿Quién agendó una cita?</h1> <br>
+                <div id="citas-container" class="md:ml-10 text-white md:w-full p-4 md:gap-4 md:flex md:flex-wrap">
+                  
+            </div>
+          </div>
+        </div>
+        
+      <script src="/Components/nav.js"></script>
+      <script src="index.js"></script>
+      </body>
+      </html>
+      
