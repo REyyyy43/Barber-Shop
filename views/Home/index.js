@@ -14,3 +14,12 @@ closeMenuButton.addEventListener('click', () => {
     // Ocultar el contenedor de los enlaces de inicio de sesión y registro
     loginSignupContainer.classList.add('translate-x-full');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let background = document.querySelector('.parallax-background');
+
+    window.addEventListener('scroll', function() {
+      let scrollValue = window.scrollY;
+      background.style.transform = 'translateY(' + -scrollValue * 0.5 + 'px)';
+    });
+  });
