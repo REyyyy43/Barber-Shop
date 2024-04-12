@@ -97,21 +97,5 @@ usersRouter.patch('/:id/:token', async (request, response) => {
 
 });
 
-usersRouter.get('/verify/:id/:token', async (request, response) => {
-  try {
-    const token = request.params.token;
-    const id = request.params.id;
-    const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    if (decodedToken.id !== id) {
-      throw new Error('Token inválido');
-    }
-    await User.findByIdAndUpdate(id, { verified: true });
-
-    response.redirect('/login');
-  } catch (error) {
-    // Manejar errores
-    response.status(400).json({ error: 'Error al verificar el correo electrónico' });
-  }
-});
 
  module.exports = usersRouter;
