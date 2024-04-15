@@ -1,5 +1,5 @@
 const PAGE_URL = process.env.NODE_ENV === 'production'
-? 'https://barber-shop-q3y0.onrender.com/'
+? 'https://barber-shop-q3y0.onrender.com'
 : 'http://localhost:3003'
 
 const MONGO_URI = process.env.NODE_ENV === 'production'
