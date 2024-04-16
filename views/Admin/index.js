@@ -56,8 +56,8 @@ function mostrarCita(cita) {
                 <p class="text-sm"><strong>Fecha:</strong> ${cita.date}</p>
                 <p class="text-sm"><strong>Hora:</strong> ${cita.hour}</p>
                 <p class="text-sm"><strong>Servicio:</strong> ${servicio.service}</p>
-                <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}</p>
-                <p class="text-sm"><strong>Precio:</strong> ${servicio.price}</p>
+                <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}min</p>
+                <p class="text-sm"><strong>Precio:</strong> ${servicio.price}€</p>
             </div>
             <button class="p-2 delete-cita-btn hover:bg-red-500 bg-red-600 text-white px-3 py-1 rounded mt-2">Eliminar</button>
         `;
@@ -94,8 +94,8 @@ function mostrarServicio(service, listService) {
     div.innerHTML = `
         <div class="flex flex-col">
             <h3 class="font-medium text-xl mb-1 text-white service-name">${service.service}</h3>
-            <p class="text-sm mb-1 text-white service-duration">${service.duration}min</p>
-            <p class="font-medium text-sm text-white service-price">${service.price}€</p> 
+            <p class="text-sm mb-1 text-white service-duration">${service.duration}</p>
+            <p class="font-medium text-sm text-white service-price">${service.price}</p> 
         </div>
         <div>
             <a class="delete-btn cursor-pointer font-bold  text-white px-3 py-1 rounded-full" data-service-id="${service.id}" data-service-name="${service.service}">
