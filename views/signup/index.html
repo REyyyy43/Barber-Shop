@@ -18,41 +18,41 @@
             <div class="w-full lg:w-2/4 flex justify-center items-center mb-16 lg:mb-0">
                 <img src="/images/perfil.svg" class="w-2/3 lg:w-3/4 flex flex-wrap flex-col" alt="imagen signup">
             </div>
-            <form id="form" class="w-full lg:w-2/4 mb-5 bg-stone-800 p-4 rounded-lg text-xs shadow-2xl">
-                <div class="flex flex-col gap-4">
+            <form id="form" class="w-full md:w-2/5 mb-5 bg-stone-800 p-4 rounded-lg text-xs shadow-2xl">
+                <div class="flex flex-col gap-1">
                     <label for="name-input" class="font-bold text-white">
                         Nombre <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" id="name-input" name="name-input" autocomplete="off" placeholder="Ramon Jesus" class="rounded-lg p-2 focus:outline-cyan-950 bg-stone-900 text-white h-12">
-                    <p class="text-sm text-red-800">Tanto el nombre como el apellido deben comenzar con mayúsculas</p>
+                    <input type="text" id="name-input" name="name-input" autocomplete="off" placeholder="Ramon Jesus" class="rounded-lg p-2 focus:outline-cyan-950 bg-stone-900 text-white h-10">
+                    <p class="text-sm md:text-xs text-red-800 mb-2">Tanto el nombre como el apellido deben comenzar con mayúsculas</p>
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
                     <label for="email-input" class="font-bold text-white">
                         Email <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" id="email-input" name="email-input" autocomplete="off" placeholder="example@gmail.com" class="rounded-lg p-2 focus:outline-cyan-950 bg-stone-900 text-white h-12">
-                    <p class="text-sm text-red-800">Correo requerido</p>
+                    <input type="text" id="email-input" name="email-input" autocomplete="off" placeholder="example@gmail.com" class="rounded-lg p-2 focus:outline-cyan-950 bg-stone-900 text-white h-10">
+                    <p class="text-sm md:text-xs mb-2 text-red-800">Correo requerido</p>
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
                     <label for="password-input" class="font-bold text-white">
                         Contraseña <span class="text-red-600">*</span>
                     </label>
-                    <input type="password" id="password-input" name="password-input" autocomplete="off" class="rounded-lg p-2 focus:outline-cyan-950 bg-stone-900 text-white h-12">
-                    <p class="text-sm text-red-800">
+                    <input type="password" id="password-input" name="password-input" autocomplete="off" class="rounded-lg focus:outline-cyan-950 bg-stone-900 text-white h-10">
+                    <p class="text-sm md:text-xs text-red-800 mb-2">
                         Debe tener al menos una letra mayúscula e minúscula y al menos un número <br>
                         Debe tener mínimo 8 caracteres
                     </p>
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
                     <label for="match-input" class="font-bold text-white">
                         Confirmar contraseña <span class="text-red-600">*</span>
                     </label>
-                    <input type="password" id="match-input" name="match-input" autocomplete="off" class="rounded-lg p-2 focus:outline-cyan-950 bg-stone-900 text-white h-12">
-                    <p class="text-sm text-red-800">
+                    <input type="password" id="match-input" name="match-input" autocomplete="off" class="rounded-lg focus:outline-cyan-950 bg-stone-900 text-white h-10">
+                    <p class="text-sm md:text-xs text-red-800 mb-2">
                         Debe coincidir con la contraseña
                     </p> <br>
                 </div>
-                <button id="form-btn" disabled class="w-full text-sm bg-black text-white font-bold rounded-lg p-4 h-12 hover:bg-stone-700 transition ease-in-out text-center disabled:opacity-50 disabled:cursor-not-allowed">
+                <button id="form-btn" disabled class="w-full text-sm bg-black text-white font-bold rounded-lg p-2 h-12 hover:bg-stone-700 transition ease-in-out text-center disabled:opacity-50 disabled:cursor-not-allowed">
                     Registrar
                 </button> 
                 <div class="flex flex-wrap items-center justify-between mt-4">
