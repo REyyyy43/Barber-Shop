@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                     // Crear el icono de cancelar (X)
                     const cancelIcon = document.createElement('i');
-                    cancelIcon.classList.add('fas', 'fa-times', 'text-white', 'bg-red-400', 'p-2', 'rounded-lg', 'flex', 'justify-end');
+                    cancelIcon.classList.add('fas', 'fa-times', 'text-white', 'hover:bg-red-700', 'bg-red-500', 'p-2', 'rounded-lg', 'flex', 'justify-end');
 
                     // Aplicar estilos al contenedor del icono de cancelar
                     cancelContainer.style.position = 'absolute';
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                     // Agregar el contenedor del icono de cancelar al HTML del carrito
                     cartItem.innerHTML = `
-                        <div class="flex flex-col p-2 justify-between border border-stone-600 rounded-lg relative">
+                        <div class="flex flex-col p-3 justify-between border border-stone-600 rounded-lg relative">
                             <p class="font-bold">${event.target.dataset.serviceName}</p>  
                             <p class="font-semibold">${selectedService.duration}min</p>  
                             <p class="font-semibold">${selectedService.price}€</p>
@@ -350,7 +350,7 @@ payBarberBtn.addEventListener('click', async function() {
             carouselDates.innerHTML = '';
 
             // Calcular el número de fechas a mostrar según el tamaño de la pantalla
-            const numberOfDatesToShow = window.innerWidth < 768 ? 5 : 7;
+            const numberOfDatesToShow = window.innerWidth < 768 ? 5 : 6;
 
             // Agregar fechas al carrusel
             for (let i = 0; i < numberOfDatesToShow; i++) {
