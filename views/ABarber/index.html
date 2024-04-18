@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body class="bg-stone-900 antialiased w-full">
+    <nav id="navbar" class="bg-stone-800 w-full z-20 top-0 start-0 shadow-xl">
+          
+    </nav>
+   
+    <section class="flex justify-center items-center flex-col text-white">
+        <div class="flex flex-col justify-center items-center">
+            <!-- Título -->
+            <h1 class="font-extrabold md:text-4xl p-2 text-white text-center">Agendar Cliente</h1>
+            <br>
+            <!-- Contenedor principal con grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Agenda de Servicios -->
+                <div class="max-w-md mx-auto bg-stone-800 p-8 rounded-md shadow-md">
+                    <h1 class="text-xl font-semibold mb-4">Agenda de Servicios</h1>
+                
+                    <!-- Selector de Fecha -->
+                    <label for="fecha" class="block mb-2">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" class="w-full bg-stone-900 border-stone-600 rounded-md py-2 px-3 mb-4">
+                
+                    <!-- Selector de Hora -->
+                    <label for="hora" class="block mb-2">Hora:</label>
+                    <input type="time" id="hora" name="hora" class="w-full border-stone-600 bg-stone-900 rounded-md py-2 px-3 mb-4">
+                
+                    <!-- Campo de Servicio -->
+                    <label for="servicio" class="block mb-2">Servicio:</label>
+                    <input type="text" id="servicio" name="servicio" class="w-full bg-stone-900 border-stone-600 rounded-md py-2 px-3 mb-4">
+                
+                    <!-- Campo de Cliente -->
+                    <label for="cliente" class="block mb-2">Cliente:</label>
+                    <input type="text" id="cliente" name="servicio" class="w-full bg-stone-900 border-stone-600 rounded-md py-2 px-3 mb-4">
+
+                    <!-- Botón para Agregar Cita -->
+                    <button id="agregarCita" class="bg-stone-500 text-white py-2 px-4 rounded-md hover:bg-stone-600">Agregar Cita</button>
+                </div>
+                
+                <!-- Lista de Citas Agendadas -->
+                <div id="citasContainer" class="max-w-md w-full mx-auto bg-stone-800 p-8 rounded-md shadow-md">
+                  <h1 class="text-xl font-semibold mb-4">Citas Agendadas</h1>
+                  <ul id="citas" class="text-stone-200"></ul>
+              </div>
+            </div>
+        </div>
+    </section>
+
+<script src="/Components/nav.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

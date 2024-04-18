@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             div.innerHTML = `
                 <div class="flex flex-col">
                     <h3 class="font-medium text-xl mb-1 text-white service-name">${service.service}</h3>
-                    <p class="text-sm mb-1 text-white service-duration">${service.duration}min</p>
-                    <p class="font-medium text-sm text-white service-price">${service.price}€</p> 
+                    <p class="text-sm mb-1 text-white service-duration">${service.duration}</p>
+                    <p class="font-medium text-sm text-white service-price">${service.price}</p> 
                 </div>
                 <div>
                     <button class="plus-btn bg-stone-700 hover:bg-stone-500 text-white px-3 py-1 rounded-full" data-service-id="${service.id}" data-service-price="${service.price}" data-service-name="${service.service}">+</button>
@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                     cartItem.innerHTML = `
                         <div class="flex flex-col p-2 justify-between border border-stone-600 rounded-lg relative">
                             <p class="font-bold">${event.target.dataset.serviceName}</p>  
-                            <p class="font-semibold">${selectedService.duration}min</p>  
-                            <p class="font-semibold">${selectedService.price}€</p>
+                            <p class="font-semibold">${selectedService.duration}</p>  
+                            <p class="font-semibold">${selectedService.price}</p>
                         </div>`;
                     cartItem.querySelector('div').appendChild(cancelContainer); // Agregar el contenedor del icono de cancelar al div del carrito
                     cartItemsContainer.appendChild(cartItem);
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                         cartItemDetails.innerHTML = `
                             <div class="flex flex-col p-2 w-full justify-between border border-stone-600 rounded-lg">
                                 <p class="font-bold">${event.target.dataset.serviceName}</p>  
-                                <p class="font-semibold">${selectedService.duration}min</p>  
-                                <p class="font-semibold">${selectedService.price}€</p>
+                                <p class="font-semibold">${selectedService.duration}</p>  
+                                <p class="font-semibold">${selectedService.price}</p>
                             </div>`;
                         cartItemDetails.classList.add('p-2', 'flex', 'items-center', 'justify-between', 'font-bold');
                         selectedServicesList.appendChild(cartItemDetails);
