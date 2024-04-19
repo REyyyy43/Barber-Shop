@@ -8,11 +8,10 @@ agendaRouter.post('/', async (request, response) => {
         const { fecha, hora, servicio, cliente } = request.body;
 
         // Crear una nueva instancia de Agenda con los datos proporcionados
-        const nuevaAgenda = new Agenda({
+        const nuevaCita = new Agenda({
             fecha: fecha,
             hora: hora,
             cliente: cliente,
-            services: [{ service: servicio }]
         });
 
         // Guardar la nueva agenda en la base de datos

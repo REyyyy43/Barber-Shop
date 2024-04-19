@@ -3,15 +3,13 @@ document.getElementById('agregarCita').addEventListener('click', async function(
     // Obtener valores de los campos
     let fecha = document.getElementById('fecha').value;
     let hora = document.getElementById('hora').value;
-    let servicio = document.getElementById('servicio').value;
     let cliente = document.getElementById('cliente').value;
 
     // Crear objeto con los datos de la cita
     let nuevaCita = {
         fecha: fecha,
         hora: hora,
-        servicio: servicio,
-        cliente: cliente
+        cliente: cliente,
     };
 
     // Enviar los datos al servidor
@@ -54,7 +52,6 @@ async function actualizarListaCitas() {
                     <div class="cita flex w-full flex-col border border-b mb-4 font-semibold border-stone-700 p-2 rounded-lg">
                         <span class="fecha-hora">${cita.fecha}</span>
                         <span class="fecha-hora">${cita.hora}</span>
-                        <span class="servicio">${cita.servicio}</span>
                         <span class="Cliente">${cita.cliente}</span>
                         <br>
                         <button class="eliminar p-2 bg-red-500 hover:bg-red-600 rounded-lg">Eliminar</button>
@@ -82,7 +79,7 @@ async function actualizarListaCitas() {
 
 // Función para eliminar una cita
 async function eliminarCita(id) {
-    try {
+    try { 
         const response = await fetch(`/api/agenda/${id}`, {
             method: 'DELETE'
         });

@@ -4,9 +4,6 @@ const agendaSchema = new mongoose.Schema({
     fecha: String,
     hora: String,
     cliente: String, 
-    services: [{
-        service: String,
-    }],
     admin: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Admin' // Nombre del modelo del administrador
