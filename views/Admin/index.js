@@ -56,8 +56,8 @@ function mostrarCita(cita) {
                 <p class="text-sm"><strong>Fecha:</strong> ${cita.date}</p>
                 <p class="text-sm"><strong>Hora:</strong> ${cita.hour}</p>
                 <p class="text-sm"><strong>Servicio:</strong> ${servicio.service}</p>
-                <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}</p>
-                <p class="text-sm"><strong>Precio:</strong> ${servicio.price}</p>
+                <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}min</p>
+                <p class="text-sm"><strong>Precio:</strong> ${servicio.price}€</p>
             </div>
             <button class="p-2 delete-cita-btn hover:bg-red-500 bg-red-600 text-white px-3 py-1 rounded mt-2">Eliminar</button>
         `;
