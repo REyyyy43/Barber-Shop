@@ -96,12 +96,16 @@ const createNavABarberP = () => {
 
       <div class="flex md:order-2 space-x-4 p-3 md:space-x-4 rtl:space-x-reverse relative"> <!-- Añade la clase relative -->
       <button class="transition ease-in-out hover:bg-red-500 hidden md:block text-white bg-transparent  focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Cerrar sesion</button>
+      <a href="/Citasave/" class=" text-white font-medium bg-stone-700 hover:bg-stone-600 transition ease-in-out rounded-lg text-sm px-4 py-2 text-center p-2">Ver citas agendadas</a>
       </div>
 
       
     <div class="bg-stone-900/80 fixed top-28 right-0 left-0 bottom-0 pt-16 z-10 flex justify-center items-center flex-col gap-4 hidden">
     <button id="close-btn" class="transition ease-in-out hover:bg-red-500 md:hidden text-white bg-transparent  focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Cerrar sesion</button>
-     </div>
+    <a href="/Citasave/" class=" text-white font-medium bg-stone-700 hover:bg-stone-600 transition ease-in-out rounded-lg text-sm px-4 py-2 text-center p-2">Ver citas agendadas</a>
+    </div>
+
+     
 `; 
 };
 
@@ -212,6 +216,7 @@ window.addEventListener('beforeunload', function (e) {
 
 const closeBtnDesktop = navbar.children[0].children[2].children[0];
 const closeBtnMobile = navbar.children[0].children[3].children[0];
+
 
 closeBtnDesktop.addEventListener('click', async e => { 
     try {
