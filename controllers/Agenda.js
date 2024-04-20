@@ -5,7 +5,7 @@ const Agenda = require('../models/Agenda');
 agendaRouter.post('/', async (request, response) => {
     try {
         // Extraer los datos de la solicitud
-        const { fecha, hora, servicio, cliente } = request.body;
+        const { fecha, hora, cliente } = request.body;
 
         // Crear una nueva instancia de Agenda con los datos proporcionados
         const nuevaCita = new Agenda({
@@ -15,7 +15,7 @@ agendaRouter.post('/', async (request, response) => {
         });
 
         // Guardar la nueva agenda en la base de datos
-        const agendaGuardada = await nuevaAgenda.save();
+        const agendaGuardada = await nuevaCita.save();
 
         // Devolver la agenda guardada como respuesta
         response.status(200).json(agendaGuardada);
