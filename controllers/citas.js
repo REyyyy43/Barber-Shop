@@ -5,8 +5,16 @@ const User = require('../models/user');
 // Obtener todas las citas de un usuario específico
 citasRouter.get('/', async (request, response) => {
     try {
-        // Buscar todas las citas en la base de datos sin filtrar por usuario
-        const citas = await Cita.find({}).populate('user', 'name email');
+        const user = request.user;
+        const citas = await Cita.find({ user: user.id }).populate('user', 'name email');
+        
+        // Ordenar las citas por fecha y hora de forma ascendente
+        citas.sort((a, b) => {
+            const dateA = new Date(`${a.date}T${a.hour}`);
+            const dateB = new Date(`${b.date}T${b.hour}`);
+            return dateA - dateB;
+        });
+
         return response.status(200).json(citas);
     } catch (error) {
         console.error('Error al buscar citas:', error);

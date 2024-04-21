@@ -39,8 +39,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-function mostrarCita(cita) {
+function arCita(cita) {
     const citasContainer = document.getElementById('citas-container');
+
+    // Ordenar los servicios de la cita por fecha y hora
+    cita.services.sort((a, b) => {
+        // Comparar por fecha primero
+        const dateComparison = new Date(a.date) - new Date(b.date);
+        if (dateComparison !== 0) {
+            return dateComparison;
+        }
+        // Si las fechas son iguales, comparar por hora
+        return a.hour.localeCompare(b.hour);
+    });
 
     cita.services.forEach(servicio => {
         const citaElement = document.createElement('div');
