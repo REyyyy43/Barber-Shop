@@ -12,7 +12,7 @@ const servicesRouter = require('./controllers/services');
 const citasRouter = require('./controllers/citas');
 const agendaRouter = require('./controllers/Agenda');
 const logoutRouter = require('./controllers/logout');
-const { userExtractor, adminExtractor } = require('./middleware/auth');
+const { userExtractor } = require('./middleware/auth');
 const { MONGO_URI } = require('./config');
 
 (async () => {
@@ -30,25 +30,23 @@ app.use(cookieParser());
 app.use(morgan('tiny')); // Mantenemos el logger de Morgan
 
 // Rutas frontend
-app.use('/', express.static(path.resolve(__dirname, 'views', 'Home')));
-app.use('/signup', express.static(path.resolve(__dirname, 'views', 'signup')));
-app.use('/login', express.static(path.resolve(__dirname, 'views', 'login')));
-app.use('/Pago', express.static(path.resolve(__dirname, 'views', 'Pago')));
-app.use('/Citasave', express.static(path.resolve(__dirname, 'views', 'Citasave')));
-app.use('/ABarberP', express.static(path.resolve(__dirname, 'views', 'ABarberP')));
-app.use('/ABarber', express.static(path.resolve(__dirname, 'views', 'ABarber')));
-app.use('/Admin', express.static(path.resolve(__dirname, 'views', 'Admin')));
-app.use('/Components', express.static(path.resolve(__dirname, 'views', 'Components')));
-app.use('/images', express.static(path.resolve(__dirname, 'img')));
-app.use('/verify/:id/:token', express.static(path.resolve(__dirname, 'views', 'verify')));
+app.use('/', express.static(path.resolve('views', 'Home')));
+app.use('/signup', express.static(path.resolve('views', 'signup')));
+app.use('/login', express.static(path.resolve('views', 'login')));
+app.use('/Pago', express.static(path.resolve('views', 'Pago')));
+app.use('/Citasave', express.static(path.resolve('views', 'Citasave')));
+app.use('/ABarberP', express.static(path.resolve('views', 'ABarberP')));
+app.use('/ABarber', express.static(path.resolve('views', 'ABarber')));
+app.use('/Admin', express.static(path.resolve('views', 'Admin')));
+app.use('/Components', express.static(path.resolve('views', 'Components')));
+app.use('/images', express.static(path.resolve('img')));
+app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
 
 // Rutas backend
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/logout', logoutRouter);
 app.use('/api/agenda', agendaRouter);
-app.use('/api/services', adminExtractor, servicesRouter); // Middleware adminExtractor aplicado primero
-app.use('/api/citas', adminExtractor, citasRouter); // Middleware adminExtractor aplicado primero
 app.use('/api/services', userExtractor, servicesRouter);
 app.use('/api/citas', userExtractor, citasRouter);
 
