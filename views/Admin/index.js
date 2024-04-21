@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const citas = response.data;
 
         if (citas.length > 0) {
-            const citasContainer = document.getElementById('citas-container');
             citas.forEach(cita => {
                 mostrarCita(cita);
             });
@@ -40,13 +39,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Función para mostrar una cita en el DOM
 function mostrarCita(cita) {
     const citasContainer = document.getElementById('citas-container');
 
     cita.services.forEach(servicio => {
         const citaElement = document.createElement('div');
-        citaElement.classList.add('bg-stone-800', 'p-4', 'rounded-lg', 'w-full', 'md:w-2/4','gap-4', 'lg:w-2/4', 'mb-4', 'md:ml-8');
+        citaElement.classList.add('bg-stone-800', 'p-4', 'rounded-lg', 'w-full', 'md:w-full', 'lg:w-full', 'mb-4'); // Modificado: añadido padding p-4
 
         const citaContent = `
             <div class="text-sm">
@@ -56,21 +54,21 @@ function mostrarCita(cita) {
                 <p class="text-sm"><strong>Fecha:</strong> ${cita.date}</p>
                 <p class="text-sm"><strong>Hora:</strong> ${cita.hour}</p>
                 <p class="text-sm"><strong>Servicio:</strong> ${servicio.service}</p>
-                <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}min</p>
-                <p class="text-sm"><strong>Precio:</strong> ${servicio.price}€</p>
+                <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}</p>
+                <p class="text-sm"><strong>Precio:</strong> ${servicio.price}</p>
             </div>
-            <button class="p-2 delete-cita-btn hover:bg-red-500 bg-red-600 text-white px-3 py-1 rounded mt-2">Eliminar</button>
+            <button class="p-2 delete-cita-btn hover:bg-red-500 bg-red-600 text-white px-3 py-1 rounded mt-2">Eliminar</button> <!-- Modificado: añadido margen superior mt-2 -->
         `;
 
         citaElement.innerHTML = citaContent;
 
-        // Agregar evento de clic al botón de eliminar cita
+        // Agregar evento de click al botón de eliminar cita
         const deleteCitaBtn = citaElement.querySelector('.delete-cita-btn');
         deleteCitaBtn.addEventListener('click', async function() {
             try {
                 // Eliminar la cita del DOM
                 citaElement.remove();
-                
+
                 // Eliminar la cita de la base de datos
                 const response = await axios.delete(`/api/citas/${cita.id}`, { withCredentials: true });
                 if (response.status === 200) {

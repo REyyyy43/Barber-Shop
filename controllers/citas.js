@@ -5,24 +5,8 @@ const User = require('../models/user');
 // Obtener todas las citas de un usuario específico
 citasRouter.get('/', async (request, response) => {
     try {
-        const user = request.user;
-        const citas = await Cita.find({ user: user._id }).populate('user', 'name email');
-        return response.status(200).json(citas);
-    } catch (error) {
-        console.error('Error al buscar citas:', error);
-        return response.status(500).json({ error: 'Error interno del servidor' });
-    }
-});
-
-citasRouter.get('/', async (request, response) => {
-    try {
-        // Obtener el ID del usuario actual desde el objeto request.user
-        const userId = request.user.id;
-
-        // Buscar todas las citas en la base de datos que pertenezcan al usuario actual
-        const citas = await Cita.find({ user: userId }).populate('user', 'name email');
-
-        // Devolver las citas del usuario actual al cliente
+        // Buscar todas las citas en la base de datos sin filtrar por usuario
+        const citas = await Cita.find({}).populate('user', 'name email');
         return response.status(200).json(citas);
     } catch (error) {
         console.error('Error al buscar citas:', error);
