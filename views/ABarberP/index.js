@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const notificationElement = document.getElementById('notification');
                 notificationElement.textContent = 'Cita agendada exitosamente.';
                 notificationElement.classList.add('text-green-500', 'font-bold', 'mt-2');
-                payBtn.parentNode.insertBefore(notificationElement, payBtn.nextSibling);
+                payBtn.parentNode.appendChild(notificationElement);
 
                 // Ocultar la notificación después de 0.3 segundos
                 setTimeout(() => {
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Manejar clic en el botón de pagar para el barbero
       // Manejar clic en el botón de pagar para el barbero
-payBarberBtn.addEventListener('click', async function() {
+      payBarberBtn.addEventListener('click', async function() {
     
     if (!selectedDate || !selectedHour) {
         // Si no se ha seleccionado una fecha o una hora, mostrar mensaje de error
@@ -261,7 +261,7 @@ payBarberBtn.addEventListener('click', async function() {
         const notificationElement = document.getElementById('notification');
         notificationElement.textContent = 'Cita agendada exitosamente.';
         notificationElement.classList.add('text-green-500', 'font-bold', 'mt-2');
-        payBtn.parentNode.insertBefore(notificationElement, payBtn.nextSibling);
+        payBtn.parentNode.appendChild(notificationElement);
 
         // Ocultar la notificación después de 0.3 segundos
         setTimeout(() => {
@@ -292,7 +292,7 @@ payBarberBtn.addEventListener('click', async function() {
         console.error('Error al guardar la cita en la base de datos:', error);
     }
 }
-});
+      });
 
         // Función para cargar la lista de horas
         async function loadHourList() {
