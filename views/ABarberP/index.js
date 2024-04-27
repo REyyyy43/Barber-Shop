@@ -109,8 +109,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                                 item.remove();
                             }
                         });
-
-                        citaCount();
                     });
 
                     // Agregar el icono de cancelar al contenedor
@@ -158,14 +156,29 @@ document.addEventListener('DOMContentLoaded', async function() {
            
             if (!selectedDate || !selectedHour) {
                 // Si no se ha seleccionado una fecha o una hora, mostrar mensaje de error
-                const errorMessageContainer = document.getElementById('error-text');
-                errorMessageContainer.textContent = 'Por favor, seleccione una fecha y una hora para continuar.';
-                errorMessageContainer.classList.add('text-red-500', 'font-bold', 'mt-2');
+                const errorTextContainer = document.getElementById('error-text');
+
+        const errorModal = document.getElementById('error-modal2');
+        errorTextContainer.textContent = "Por favor, seleccione una fecha y una hora.";
+        errorTextContainer.innerHTML = `
+        <div class="flex justify-center items-center h-full">
+        <div class="text-center flex flex-col justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-56 h-56">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <p class="text-red-700 text-sm font-serif mt-2">Por favor, seleccione una fecha y una hora.</p>
+        </div>
+    </div>
+`;
         
-                // Ocultar el mensaje de error después de 3 segundos
-                setTimeout(() => {
-                    errorMessageContainer.textContent = '';
-                }, 3000);
+        errorModal.classList.remove('hidden');
+        
+        // Ocultar la notificación después de 0.3 segundos
+        setTimeout(() => {
+            errorTextContainer.style.display = 'none';
+            errorModal.classList.add('hidden');
+        }, 2000); 
+       
         
                 return; // Detener la ejecución de la función
             }
@@ -189,16 +202,27 @@ document.addEventListener('DOMContentLoaded', async function() {
                 // Redirigir a la página de pago después de guardar la cita
                 window.location.href = '/Pago';
 
-                // Mostrar notificación de éxito
+                // Mostrar notificación de éxito en el centro de la página
                 const notificationElement = document.getElementById('notification');
-                notificationElement.textContent = 'Cita agendada exitosamente.';
-                notificationElement.classList.add('text-green-500', 'font-bold', 'mt-2');
-                payBtn.parentNode.appendChild(notificationElement);
+                notificationElement.innerHTML = `
+                <div class="fixed inset-0 flex justify-center items-center bg-stone-950 bg-opacity-50">
+        <div class="flex flex-col items-center bg-stone-100 md:w-2/5 w-3/4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-56 h-56 p-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+            </svg>
+            <p style="color: #10B981;" class="font-bold  p-4 rounded-lg z-50 text-center">
+                Cita agendada exitosamente. 
+            </p>
+        </div>
+    </div>
+            `;
+                document.body.appendChild(notificationElement);
 
                 // Ocultar la notificación después de 0.3 segundos
                 setTimeout(() => {
                     notificationElement.style.display = 'none';
-                }, 3000);
+                    notificationElement.remove(); // Elimina el elemento del DOM después de ocultarlo
+                    }, 3000);
 
                 // Limpiar los servicios seleccionados, precio total y carrito
                 selectedServices = [];
@@ -209,37 +233,66 @@ document.addEventListener('DOMContentLoaded', async function() {
                 selectedHourElement.textContent = '';
                 cartItemsContainer.innerHTML = '';
             } catch (error) {
-                if (error.response.status === 400) {
+                if (error.response && error.response.status === 400) {
                     // En caso de error, establece el mensaje de error en el contenedor y muéstralo
                     const errorMessageContainer = document.getElementById('error-message');
+        
+                    const errorModal = document.getElementById('error-modal');
                     errorMessageContainer.textContent = error.response.data.error;
-                    errorMessageContainer.classList.add('text-red-500','text-sm', 'font-serif', 'mt-2');
+                    errorMessageContainer.innerHTML = `
+                    <div class="flex justify-center items-center h-full">
+                    <div class="text-center flex flex-col justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-56 h-56">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <p class="text-red-700 text-sm font-serif mt-2">${error.response.data.error}</p>
+                    </div>
+                </div>
+            `;
+                    
+                    errorModal.classList.remove('hidden');
                     
                     // Ocultar la notificación después de 0.3 segundos
                     setTimeout(() => {
                         errorMessageContainer.style.display = 'none';
-                        
+                        errorModal.classList.add('hidden');
                     }, 2000); 
+                   
                 } else {
                     console.error('Error al guardar la cita en la base de datos:', error);
                 }
             }
         });
 
-        // Manejar clic en el botón de pagar para el barbero
+        
       // Manejar clic en el botón de pagar para el barbero
       payBarberBtn.addEventListener('click', async function() {
     
     if (!selectedDate || !selectedHour) {
         // Si no se ha seleccionado una fecha o una hora, mostrar mensaje de error
-        const errorMessageContainer = document.getElementById('error-text');
-        errorMessageContainer.textContent = 'Por favor, seleccione una fecha y una hora para continuar.';
-        errorMessageContainer.classList.add('text-red-500', 'font-bold', 'mt-2');
+        const errorTextContainer = document.getElementById('error-text');
 
-        // Ocultar el mensaje de error después de 3 segundos
+        const errorModal = document.getElementById('error-modal2');
+        errorTextContainer.textContent = "Por favor, seleccione una fecha y una hora.";
+        errorTextContainer.innerHTML = `
+        <div class="flex justify-center items-center h-full">
+        <div class="text-center flex flex-col justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-56 h-56">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <p class="text-red-700 text-sm font-serif mt-2">Por favor, seleccione una fecha y una hora.</p>
+        </div>
+    </div>
+`;
+        
+        errorModal.classList.remove('hidden');
+        
+        // Ocultar la notificación después de 0.3 segundos
         setTimeout(() => {
-            errorMessageContainer.textContent = '';
-        }, 3000);
+            errorTextContainer.style.display = 'none';
+            errorModal.classList.add('hidden');
+        }, 2000); 
+       
 
         return; // Detener la ejecución de la función
     }
@@ -257,16 +310,27 @@ document.addEventListener('DOMContentLoaded', async function() {
         const citaResponse = await axios.post('/api/citas', citaData);
         console.log('Cita guardada en la base de datos:', citaResponse.data);
 
-        // Mostrar notificación de éxito
-        const notificationElement = document.getElementById('notification');
-        notificationElement.textContent = 'Cita agendada exitosamente.';
-        notificationElement.classList.add('text-green-500', 'font-bold', 'mt-2');
-        payBtn.parentNode.appendChild(notificationElement);
+       // Mostrar notificación de éxito en el centro de la página
+       const notificationElement = document.getElementById('notification');
+       notificationElement.innerHTML = `
+       <div class="fixed inset-0 flex justify-center items-center bg-stone-950 bg-opacity-50">
+        <div class="flex flex-col items-center bg-stone-100 md:w-2/5 w-3/4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-56 h-56 p-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+            </svg>
+            <p style="color: #10B981;" class="font-bold  p-4 rounded-lg z-50 text-center">
+                Cita agendada exitosamente. 
+            </p>
+        </div>
+    </div>
+   `;
+       document.body.appendChild(notificationElement);
 
         // Ocultar la notificación después de 0.3 segundos
         setTimeout(() => {
             notificationElement.style.display = 'none';
-        }, 2000);
+            notificationElement.remove(); // Elimina el elemento del DOM después de ocultarlo
+            }, 3000);
 
         // Limpiar los servicios seleccionados, precio total y carrito
         selectedServices = [];
@@ -277,17 +341,31 @@ document.addEventListener('DOMContentLoaded', async function() {
         selectedHourElement.textContent = '';
         cartItemsContainer.innerHTML = '';
     } catch (error) {
-        if (error.response.status === 400) {
+        if (error.response && error.response.status === 400) {
             // En caso de error, establece el mensaje de error en el contenedor y muéstralo
             const errorMessageContainer = document.getElementById('error-message');
+
+            const errorModal = document.getElementById('error-modal');
             errorMessageContainer.textContent = error.response.data.error;
-            errorMessageContainer.classList.add('text-red-500','text-sm', 'font-serif', 'mt-2');
+            errorMessageContainer.innerHTML = `
+            <div class="flex justify-center items-center h-full">
+            <div class="text-center flex flex-col justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-56 h-56">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <p class="text-red-700 text-sm font-serif mt-2">${error.response.data.error}</p>
+            </div>
+        </div>
+    `;
+            
+            errorModal.classList.remove('hidden');
             
             // Ocultar la notificación después de 0.3 segundos
             setTimeout(() => {
                 errorMessageContainer.style.display = 'none';
-                
+                errorModal.classList.add('hidden');
             }, 2000); 
+           
     } else {
         console.error('Error al guardar la cita en la base de datos:', error);
     }
