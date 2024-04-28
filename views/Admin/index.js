@@ -68,7 +68,7 @@ function arCita(cita) {
                 <p class="text-sm"><strong>Duración:</strong> ${servicio.duration}</p>
                 <p class="text-sm"><strong>Precio:</strong> ${servicio.price}</p>
             </div>
-            <button class="p-2 delete-cita-btn hover:bg-red-500 bg-red-600 text-white px-3 py-1 rounded mt-2">Eliminar</button> <!-- Modificado: añadido margen superior mt-2 -->
+            <button class="p-2 delete-cita-btn transition ease-in-out hover:bg-red-500 bg-red-600 text-white px-3 py-1 rounded mt-2">Eliminar</button> <!-- Modificado: añadido margen superior mt-2 -->
         `;
 
         citaElement.innerHTML = citaContent;
