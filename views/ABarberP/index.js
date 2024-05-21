@@ -335,10 +335,10 @@ try {
     // Limpiar los servicios seleccionados, precio total y carrito
     selectedServices = [];
     totalPrice = 0;
-    totalPriceElement.textContent = 0;
-    totalPriceCitasElement.textContent = 0;
-    selectedDateElement.textContent = '';
-    selectedHourElement.textContent = '';
+    totalPriceElement.innerHTML = 0;
+    totalPriceCitasElement.innerHTML = 0;
+    selectedDateElement.innerHTML = '';
+    selectedHourElement.innerHTML = '';
     cartItemsContainer.innerHTML = '';
 } catch (error) {
     if (error.response && error.response.status === 400) {

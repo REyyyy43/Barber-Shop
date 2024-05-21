@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="shortcut icon" href="/images/Captura de pantalla 2024-02-16 030656.png">
+    <link rel="stylesheet" href="/styles/output.css">
     <link
       rel="apple-touch-icon"
       sizes="76x76"
@@ -101,21 +101,14 @@
               <!-- Contenido de los servicios --> 
           </ul>
         </div>
-          </section>
-
-      
-       
-          
         </section>
-        <div class="md:flex md:flex-row md:justify-between md:ml-28">
-          <div class="bg-stone-900 h-full rounded-lg">
+          <div class="bg-stone-900 h-full rounded-lg md:flex md:flex-row md:justify-between md:ml-28">
             <div class="p-2">
             <h1 id="titulo-citas" class="font-extrabold md:text-4xl mr-28 text-white text-center">¿Quién agendó una cita?</h1> <br>
-                <div id="citas-container" class="md:ml-10 text-white md:w-full p-4 md:gap-4 md:flex md:flex-wrap">
+                <div  id="citas-container" class="md:ml-10 text-white md:w-full p-4 md:gap-4 md:flex md:flex-wrap">
                   
             </div>
           </div>
-        </div>
         
       <script src="/Components/nav.js"></script>
       <script src="index.js"></script>
