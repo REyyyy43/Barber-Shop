@@ -36,39 +36,6 @@ const createNavHome = () => {
     `;
 };
 
-const createNavSignup = () => {
-
-    navbar.innerHTML = `
-    
-        <!-- Enlaces de navegación -->
-        <div class="space-x-4 p-4">
-            <a href="/login/" class=" login-button text-white hover:text-gray-300">Login</a>
-        </div>
-    `;
-};
-
-const createNavLogin = () => {
-
-    navbar.innerHTML = `
-      <div
-        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
-      >
-        <div
-          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
-        >
-          <img class="h-12 flex items-center space-x-3 rtl:space-x-reverse " src="/images/Captura de pantalla 2024-02-16 030656.png" alt="1">
-          >
-          <button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-            type="button"
-          >
-            <i class="text-white fas fa-bars"></i>
-          </button>
-        </div>
-      </div>
-    `
-};
-
 const createNavABarberP = () => {
 
     navbar.innerHTML = `
@@ -170,10 +137,6 @@ const createNavAdmin = () => {
 
 if (window.location.pathname === '/') {
     createNavHome();
-} else if (window.location.pathname === '/signup/') {
-    createNavSignup();
-} else if (window.location.pathname === '/login/') {
-    createNavLogin();
 } else if (window.location.pathname === '/ABarberP/') {
     createNavABarberP();
 } else if (window.location.pathname === '/ABarber/') {

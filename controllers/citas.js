@@ -10,9 +10,9 @@ citasRouter.get('/', async (request, response) => {
         let citas;
 
         if (user.role === 'admin') {
-            citas = await Cita.find().populate('user', 'name email');
+            citas = await Cita.find().populate('user', 'name email phone');
         } else {
-            citas = await Cita.find({ user: user._id }).populate('user', 'name email');
+            citas = await Cita.find({ user: user._id }).populate('user', 'name email phone');
         }
 
         return response.status(200).json(citas);

@@ -49,8 +49,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const citaContent = `
                 <div class="text-sm">
                     <img src="/images/perfil.svg" class="w-10 flex">
-                    <p class="text-sm"><strong>Cliente:</strong> ${cita.user.name}</p>
-                    <p class="text-sm"><strong>Email:</strong> ${cita.user.email}</p>
+                    ${cita.user ? `
+                        <p class="text-sm"><strong>Cliente:</strong> ${cita.user.name}</p>
+                        <p class="text-sm"><strong>Email:</strong> ${cita.user.email}</p>
+                        <p class="text-sm"><strong>Numero:</strong> ${cita.user.phone}</p>
+                    ` : ''}
                     <p class="text-sm"><strong>Fecha:</strong> ${cita.date}</p>
                     <p class="text-sm"><strong>Hora:</strong> ${cita.hour}</p>
                     ${cita.services.map(servicio => `
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         
             citaElement.innerHTML = citaContent;
-        
+            
             const deleteCitaBtn = citaElement.querySelector('.delete-cita-btn');
             deleteCitaBtn.addEventListener('click', async function() {
                 try {
