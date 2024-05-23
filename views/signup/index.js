@@ -46,6 +46,7 @@ const validation = (input , regexValidation) => {
     } else if (regexValidation) {
         input.classList.remove('outline-none');
         input.classList.add('outline-green-500'  , 'outline-2' , 'outline');
+        input.classList.remove('outline-red-500');
         formBtn.classList.remove('disabled' , 'cursor-not-allowed', 'opacity-50');
         information.classList.add('hidden');
     } else if (!regexValidation){
@@ -89,6 +90,7 @@ phoneInput.addEventListener('input', e => {
     } else if (phoneValidation) {
         phoneInput.classList.remove('outline-none');
         phoneInput.classList.add('outline-green-500'  , 'outline-2' , 'outline');
+        phoneInput.classList.remove('outline-red-500');
         formBtn.classList.remove('disabled' , 'cursor-not-allowed');
         information.classList.add('hidden');
     } else if (!phoneValidation){
