@@ -26,16 +26,17 @@ const createNavHome = () => {
         </svg>
     </div>
 
-    <div class="flex md:order-2 space-x-4 p-3 md:space-x-4 rtl:space-x-reverse relative"> <!-- Añade la clase relative -->
-    <button class="transition ease-in-out hover:bg-red-500 hidden md:block text-white bg-transparent  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Cerrar sesion</button>
-    </div>
+      <div class="flex md:order-2 space-x-4 p-3 md:space-x-4 rtl:space-x-reverse relative"> <!-- Añade la clase relative -->
+      <a href="/login/" class="transition ease-in-out hover:bg-stone-500 hidden md:block text-white bg-transparent  focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Log in</a>
+      <a href="/signup/" class=" hidden md:block text-white font-medium bg-stone-700 hover:bg-stone-600 transition ease-in-out rounded-lg text-sm px-4 py-2 text-center p-2">Sign Up</a>
+      </div>
 
       
-    <div class="bg-stone-900/80 fixed top-28 right-0 left-0 bottom-0 pt-16 z-10 flex justify-center items-center flex-col gap-4 hidden">
-    <a href="/login/" class="transition ease-in-out hover:bg-stone-500 md:hidden text-white bg-transparent  focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Login</a>
-    <a href="/signup/" class=" text-white font-medium bg-stone-700 hover:bg-stone-600 transition ease-in-out rounded-lg text-sm px-4 py-2 text-center p-2">Sign Up</a>
-    </div>
-
+      <div class="bg-stone-900/80 fixed top-28 right-0 left-0 bottom-0 pt-16 z-10 flex justify-center items-center flex-col gap-4 hidden">
+      <a href="/login/" class="transition ease-in-out hover:bg-stone-500 md:hidden text-white bg-transparent  focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Log in</a>
+      <a href="/signup/" class=" text-white font-medium bg-stone-700 hover:bg-stone-600 transition ease-in-out rounded-lg text-sm px-4 py-2 text-center p-2">Sign Up</a>
+      </div>
+  
     `;
 };
 
